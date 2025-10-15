@@ -5,7 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Grocery.App.Views"
     Shell.FlyoutBehavior="Disabled"
+    x:Name="This"
     Title="GroceryApp">
+    <Shell.BindingContext>
+        <x:Reference Name="This"/>
+    </Shell.BindingContext>
 
     <TabBar>
         <Tab Title="Home" Icon="grocerylist.png">
@@ -19,6 +23,9 @@
         </Tab>
         <Tab Title="Product categoriën" Icon="categories.png">
             <ShellContent Title="Product categoriën" ContentTemplate="{DataTemplate local:CategoriesView}" />
+        </Tab>
+        <Tab Title="Nieuw product" Icon="categories.png" IsVisible="{Binding Source={x:Reference This}, Path=IsAdmin}">
+            <ShellContent Title="Nieuw product" ContentTemplate="{DataTemplate local:NewProductView}" />
         </Tab>
     </TabBar>
 </Shell>

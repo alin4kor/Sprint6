@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Grocery.App.ViewModels"
+             x:Class="Grocery.App.Views.NewProductView"
+             Title="NewProductView">
+    
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="NewProduct" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+
+    <Border Stroke="#C49B33" StrokeThickness="4" Padding="10" Margin="10" HorizontalOptions="Center">
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" Padding="30">
+
+                <Label Text="Add New Product" 
+                   FontSize="24" 
+                   HorizontalOptions="Center" 
+                   FontAttributes="Bold" />
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Product Name:" FontSize="16" FontAttributes="Bold"/>
+                    <Entry Placeholder="Enter product name"
+                       Text="{Binding Name}"
+                       FontSize="16"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Stock Quantity:" FontSize="16" FontAttributes="Bold"/>
+                    <Entry Placeholder="Enter stock quantity"
+                       Text="{Binding Stock}"
+                       Keyboard="Numeric"
+                       FontSize="16"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Shelf Life:" FontSize="16" FontAttributes="Bold"/>
+                    <DatePicker Date="{Binding ShelfLife}"
+                            Format="D"
+                            FontSize="16"/>
+
+                    <Label Text="{Binding ShelfLife, StringFormat='Selected: {0:MMMM dd, yyyy}'}"
+                       FontSize="14"
+                       TextColor="Gray"
+                       HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Price:" FontSize="16" FontAttributes="Bold"/>
+                    <Entry Placeholder="Enter price"
+                       Text="{Binding Price}"
+                       Keyboard="Numeric"
+                       FontSize="16"/>
+                </VerticalStackLayout>
+
+                <Frame
+                   Padding="15"
+                   HorizontalOptions="Fill">
+                    <Label Text="{Binding AddMessage}"
+                       FontSize="14"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <Button Text="Add Product" 
+                    Command="{Binding AddProductCommand}"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    FontSize="16"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    HorizontalOptions="Fill"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Border>
+</ContentPage>
