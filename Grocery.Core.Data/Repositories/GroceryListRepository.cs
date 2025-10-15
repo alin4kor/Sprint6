@@ -49,7 +49,6 @@ namespace Grocery.Core.Data.Repositories
         }
         public GroceryList Add(GroceryList item)
         {
-            int recordsAffected;
             string insertQuery = $"INSERT INTO GroceryList(Name, Date, Color, ClientId) VALUES(@Name, @Date, @Color, @ClientId) Returning RowId;";
             OpenConnection();
             using (SqliteCommand command = new(insertQuery, Connection))
